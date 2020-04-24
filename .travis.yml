@@ -6,6 +6,11 @@ services:
 script:
   - docker build -t bigbluebutton/bigbluebutton:master .
 
+before_install:
+  - echo "BEFORE INSTALL START"
+  - gem install bundler
+  - echo "BEFORE INSTALL END"
+
 after_script:
   - docker images
 
