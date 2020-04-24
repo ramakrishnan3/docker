@@ -3,22 +3,9 @@ MAINTAINER ffdixon@bigbluebutton.org
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update
-RUN apt-get install wget vim git --assume-yes
+RUN apt-get install rubygems
 
-# install RVM
-RUN apt-get install build-essential curl --assume-yes
-RUN curl -L https://get.rvm.io | bash -s stable
-RUN echo 'source /etc/profile.d/rvm.sh' >> ~/.bashrc
-RUN /usr/local/rvm/bin/rvm-shell -c "rvm requirements"
-
-# install Ruby
-RUN /bin/bash -l -c "rvm autolibs enable"
-RUN /bin/bash -l -c "rvm install 2.1.2"
-
-# install Rails
-RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
-RUN /bin/bash -l -c "gem install bundler -v 1.16.1"
+RUN gem install bundler -v 1.16.1
 RUN apt-get install -y bigbluebutton
 
 
