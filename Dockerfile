@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 MAINTAINER ffdixon@bigbluebutton.org
 
 ENV DEBIAN_FRONTEND noninteractive
+RUN apt-get install bundler -v 1.16.1
+
 # RUN echo 'Acquire::http::Proxy "http://192.168.2.69:3142";'  > /etc/apt/apt.conf.d/01proxy
 RUN apt-get update && apt-get install -y wget apt-transport-https
 
@@ -31,7 +33,7 @@ RUN chmod +x /etc/init.d/tomcat7
 
 # -- Install BigBlueButton
 RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
-RUN gem install bundler -v 1.16.1
+RUN apt-get install bundler -v 1.16.1
 RUN apt-get install -y bigbluebutton
 RUN apt-get install -y bbb-demo 
 
