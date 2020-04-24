@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER ffdixon@bigbluebutton.org
 
 ENV DEBIAN_FRONTEND noninteractive
-RUN gem install bundler -v 1.16.1
+RUN /bin/bash -l -c "gem install bundler -v 1.16.1"
 RUN apt-get install -y bigbluebutton
 
 
